@@ -1,9 +1,9 @@
 import './App.css';
-
-function App() {
+import UsersList from './components/user';
+const App = () => {
   return (
-    <div className="App">
-      
+    <div>
+      <UsersList />
     </div>
   );
 }
