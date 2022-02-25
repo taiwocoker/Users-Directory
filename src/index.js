@@ -1,15 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import  { extendTheme, ChakraProvider } from '@chakra-ui/react';
+import store from './store';
 import App from './App';
+
+const colors = {
+  brand: {
+    900: '#1a365d',
+    800: '#153e75',
+    700: '#2a69ac',
+  },
+}
+
+const theme = extendTheme({ colors })
+
+export const StoreContext = React.createContext();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <StoreContext.Provider value={store}>
+      <ChakraProvider theme={theme}>
+        <App />
+      </ChakraProvider>
+    </StoreContext.Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+
